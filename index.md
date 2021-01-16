@@ -1,8 +1,8 @@
-## Welcome to GitHub Pages
+## 张翼程 (Eason Zhang)
 
-You can use the [editor on GitHub](https://github.com/lionel718/easonzhang.github.com/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
-
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### 学历
+#### 本科: 四川大学 (Sichuan University)
+#### 硕士: 帝国理工学院 (Imperial College Londonn)
 
 ### Markdown
 
