@@ -8,7 +8,7 @@
       <p><b>地址:</b></p>
     </td>
     <td width="25%">
-      <img src="/IMG_2370 2.jpg" width="100%">      % 插入证件照代码
+      <img src="/IMG_2370 2.jpg" width="100%"> 
     </td>
   </tr>
 </table>
