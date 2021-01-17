@@ -21,24 +21,22 @@
 <body>
 <table border="0" align = "left">
   <tr height="40px">
-    <td><h3>硕士在读</h3></td>
-    <td> 帝国理工学院 应用机器学习专业</td>
-    <td  rowspan="4" width = "25%"><img src="profile.jpg" width="100%"> </td>
+    <td>硕士在读</td>
+    <td>帝国理工学院 应用机器学习专业</td>
+    <td rowspan="4" width = "25%"><img src="profile.jpg" width="100%"> </td>
   </tr>
   <tr height="40px">
-       <td><p><font size="2"> <span>
-本科</span></font></p></td>
-    <td> 四川大学 通信工程专业</td>
-
+    <td><span>本科</span></td>
+    <td>四川大学 通信工程专业</td>
   </tr>
   <tr height="40px">
-    <td><h3>邮箱</h3></td>
+    <td><span>邮箱</span></td>
     <td> zhangyicheng98@126.com</td>
 
   </tr>
   <tr height="40px">
-    <td><span><h3>地址</h3></span></td>
-    <td> West Kensington Court, Edith Villas, London, W14 9AB</td>
+    <td><span>地址</span></td>
+    <td>West Kensington Court, Edith Villas, London, W14 9AB</td>
   </tr>
 </table>
 <br>
