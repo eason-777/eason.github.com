@@ -79,7 +79,7 @@
     <div class="popup">
         <div class="popup-content">
             <div class="popup-text">
-                I'm a new kind of <b>popup</b>.<br/>
+                I'm <b>Eason</b>.<br/>
                 Move your <b>mouse</b> around !
             </div>
         </div>
