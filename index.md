@@ -1,6 +1,5 @@
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
     <style>
         span{
             width: 80px;
@@ -41,9 +40,6 @@
     <td> West Kensington Court, Edith Villas, London, W14 9AB</td>
   </tr>
 </table>
-<style type = "text/css">
-    table tr td{
-    vertical-align:top;}
-</style>
 <br>
 <a href="index-en.html">英文版</a><br>
+</body>
