@@ -22,7 +22,7 @@
 <body>
 <table border="0" align = "left">
   <tr height="40px">
-    <td><span><h3>硕士在读</h3></span></td>
+    <td vertical-align: bottom><span><h3>硕士在读</h3></span></td>
     <td> 帝国理工学院 应用机器学习专业</td>
     <td  rowspan="4" width = "25%"><img src="profile.jpg" width="100%"> </td>
   </tr>
