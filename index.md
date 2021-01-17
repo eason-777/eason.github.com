@@ -18,12 +18,12 @@
 	margin: 0px;
 	overflow: hidden;
 	}
-	#canvas {
+	#canvas{
             margin: 0;
             padding: 0;
             position: fixed;
             touch-action: none;
-           <!--width: calc(100% - 2px); --> /* for borders */
+           <!-- width: calc(100% - 2px); --> /* for borders */
            <!-- height: calc(100% - 2px); --> /* for borders */
             border: 1px dashed;
             top:0;
