@@ -23,6 +23,7 @@
             padding: 0;
             position: fixed;
             touch-action: none;
+	    pointer-events: none;
            <!-- width: calc(100% - 2px); --> /* for borders */
            <!-- height: calc(100% - 2px); --> /* for borders */
             border: 1px dashed;
