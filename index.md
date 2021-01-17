@@ -33,7 +33,7 @@
 
 # 张翼程 (Eason ZHANG)
 
-<canvas id="nokey" width="200" height="100">
+<canvas id="nokey" width="100" height="100">
     Your Browser Don't Support Canvas, Please Download Chrome ^_^``
 </canvas>
 
