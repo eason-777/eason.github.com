@@ -26,7 +26,7 @@
     <td  rowspan="4" width = "25%"><img src="profile.jpg" width="100%"> </td>
   </tr>
   <tr height="40px">
-    <td><span><h3>本科</h3></span></td>
+    <td><h3 style="text-align:justify">本科</h3></td>
     <td> 四川大学 通信工程专业</td>
 
   </tr>
