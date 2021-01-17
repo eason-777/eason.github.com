@@ -12,7 +12,7 @@
             display: inline-block;
             overflow: hidden;
             height: 0;
-        
+        }
         html, body { height: 100%; }
         body {
             margin: 0;
@@ -68,7 +68,6 @@
         .popup-text b {
             color: coral;
             font-weight: 300;
-        }
         }
     </style>
 </head>
