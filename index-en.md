@@ -20,7 +20,7 @@
 # Eason ZHANG
 
 <body>
-<table border="0" align = "left">
+<table border="0" align = "center">
   <tr height="40px" valign="top">
     <td><span>Master</span></td>
     <td> Imperial College London (MSc Applied Machine Learning)</td>
