@@ -77,7 +77,6 @@
 <br>
 <a href="index-en.html">英文版</a><br>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
 var PI2 = Math.PI * 2;
 var HALF_PI = Math.PI / 2;
