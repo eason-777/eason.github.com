@@ -51,15 +51,12 @@
 
 # 张翼程 (Eason ZHANG)
 
-
-
-<body>
 h1#title="Mouse Orbit"
 h2#sub-title="Ghost Particle Animation"
 #container
-canvas#canvas
-    
-    
+  canvas#canvas
+
+<body>    
 <table border="0" align = "center">
   <tr height="40px" valign="top">
     <td><span>硕士在读</span></td>
