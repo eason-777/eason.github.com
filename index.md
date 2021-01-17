@@ -110,7 +110,7 @@
 <br>
 <a href="index-en.html">英文版</a><br>
 
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
     var moveForce = 30; // max popup movement in pixels
     var rotateForce = 20; // max popup rotation in deg
