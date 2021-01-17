@@ -43,7 +43,7 @@
 </table>
 <style type = "text/css">
     table tr td{
-    vertical-align:bottom;}
+    vertical-align:top;}
 </style>
 <br>
 <a href="index-en.html">英文版</a><br>
