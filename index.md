@@ -50,9 +50,6 @@
 </head>
 
 # 张翼程 (Eason ZHANG)
-
-h1#title="Mouse Orbit"
-h2#sub-title="Ghost Particle Animation"
 #container
   canvas#canvas
 
