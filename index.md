@@ -5,7 +5,7 @@
       <p><b>硕士在读</b></p>
       <p><b>帝国理工学院 (Imperial College London)</b></p>
       <p><b>邮箱: zhangyicheng98@126.com</b></p>
-      <p><b>地址:</b></p>
+      <p><b>地址: West Kensington Court, Edith Villas, London, W14 9AB</b></p>
     </td>
     <td width="25%">
       <img src="/profile.jpg" width="100%"> 
