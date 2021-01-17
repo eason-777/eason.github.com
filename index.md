@@ -16,18 +16,15 @@
         }
         @import "compass/css3";
         @import url(https://fonts.googleapis.com/css?family=Raleway:100);
-
         html, body {
           min-height: 100%;
           height: 100%;
         }
-
         body {
           font-family: 'Raleway', sans-serif;
           font-weight: 100;
           color: rgba(255, 255, 255, 0.75);
         }
-
         #title {
           position: fixed;
           top: 10px;
@@ -36,7 +33,6 @@
           letter-spacing: 0.1em;
           z-index: 100;
         }
-
         #sub-title {
           position: fixed;
           top: 35px;
@@ -45,7 +41,6 @@
           letter-spacing: 0.1em;
           z-index: 100;
         }
-
         #canvas {
           position: absolute;
           left: 0;
