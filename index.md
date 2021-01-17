@@ -80,7 +80,7 @@
         <div class="popup-content">
             <div class="popup-text">
                 I'm <b>Eason</b>.<br/>
-                Move your <b>mouse</b> around !
+                Move your <b>mouse</b> around!
             </div>
         </div>
     </div>
