@@ -57,7 +57,7 @@
 </table>
 <br>
 <a href="index-en.html">英文版</a><br>
-<canvas id='canvas' width="256" height="256"></canvas>
+<canvas id='canvas' width="64" height="64"></canvas>
 
 <script>
 (function() {
