@@ -19,8 +19,7 @@
 
 
 <body>
-#张翼程 (Eason ZHANG)
-    
+#张翼程 (Eason ZHANG)<br>
 <table border="0" align = "left">
   <tr height="40px">
     <td><span>硕士在读</span></td>
@@ -40,9 +39,7 @@
   <tr height="40px">
     <td><span>地址</span></td>
     <td> West Kensington Court, Edith Villas, London, W14 9AB</td>
-
   </tr>
-
 </table>
-
-<a href="index-en.html">英文版</a>
+<br>
+<a href="index-en.html">英文版</a><br>
