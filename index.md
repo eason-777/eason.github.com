@@ -19,7 +19,7 @@
 
 
 <body>
-#张翼程 (Eason ZHANG)<br>
+# 张翼程 (Eason ZHANG)<br>
 <table border="0" align = "left">
   <tr height="40px">
     <td><span>硕士在读</span></td>
