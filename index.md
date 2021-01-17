@@ -22,7 +22,7 @@
 <body>
 <table border="0" align = "left">
   <tr height="40px">
-    <td vertical-align: bottom><span><h3>硕士在读</h3></span></td>
+    <td><span><h3>硕士在读</h3></span></td>
     <td> 帝国理工学院 应用机器学习专业</td>
     <td  rowspan="4" width = "25%"><img src="profile.jpg" width="100%"> </td>
   </tr>
@@ -41,5 +41,9 @@
     <td> West Kensington Court, Edith Villas, London, W14 9AB</td>
   </tr>
 </table>
+<style type = "text/css">
+    table tr td{
+    vertical-align:bottom;}
+</style>
 <br>
 <a href="index-en.html">英文版</a><br>
