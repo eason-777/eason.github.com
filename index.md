@@ -2,10 +2,10 @@
   <tr>
     <td width="75%">
       <h1>张翼程 (Eason Zhang)</h1>
-      <p><b>硕士在读</b></p>
-      <p><b>帝国理工学院 (Imperial College London)</b></p>
-      <p><b>邮箱: zhangyicheng98@126.com</b></p>
-      <p><b>地址: West Kensington Court, Edith Villas, London, W14 9AB</b></p>
+      <p><b>硕士在读: 帝国理工学院 应用机器学习专业</b></p>
+      <p><b>本    科: 四川大学 通信工程专业</b></p>
+      <p><b>邮    箱: zhangyicheng98@126.com</b></p>
+      <p><b>地    址: West Kensington Court, Edith Villas, London, W14 9AB</b></p>
     </td>
     <td width="25%">
       <img src="/profile.jpg" width="100%"> 
