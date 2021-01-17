@@ -41,8 +41,8 @@
   <tr height="40px">
     <td><span>Address</span></td>
     <td> West Kensington Court, Edith Villas, London, W14 9AB</td>
-
   </tr>
-
 </table>
+
+<a href="index.html">Chinese Version</a>
 </html>
