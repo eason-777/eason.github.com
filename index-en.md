@@ -1,4 +1,3 @@
-<html>
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
@@ -45,4 +44,3 @@
 </table>
 
 <a href="index.html">Chinese Version</a>
-</html>
