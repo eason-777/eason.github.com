@@ -18,13 +18,24 @@
 	margin: 0px;
 	overflow: hidden;
 	}
+	#canvas {
+            margin: 0;
+            padding: 0;
+            position: fixed;
+            touch-action: none;
+            width: calc(100% - 2px); /* for borders */
+            height: calc(100% - 2px); /* for borders */
+            border: 1px dashed;
+            top:0;
+            left:0;
+	    z-index : -1;
+        }
     </style>
 </head>
 
 # 张翼程 (Eason ZHANG)
 
 <body>    
-<canvas id='canvas'></canvas>
 <table border="0" align = "center">
   <tr height="40px" valign="top">
     <td><span>硕士在读</span></td>
@@ -47,6 +58,7 @@
 </table>
 <br>
 <a href="index-en.html">英文版</a><br>
+<canvas id='canvas' width="256" height="256"></canvas>
 
 <script>
 (function() {
