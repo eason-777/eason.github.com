@@ -1,6 +1,5 @@
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
     <style>
         span{
             width: 80px;
@@ -43,4 +42,4 @@
 </table>
 <br>
 <a href="index-en.html">英文版</a><br>
-SWAGGGGGGG~
+
