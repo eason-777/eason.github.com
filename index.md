@@ -111,7 +111,7 @@
 <a href="index-en.html">英文版</a><br>
 
 
-<script type="text/javascript" language="javascript">
+<script>
     var moveForce = 30; // max popup movement in pixels
     var rotateForce = 20; // max popup rotation in deg
     $(document).mousemove(function(e) {
