@@ -14,79 +14,57 @@
             overflow: hidden;
             height: 0;
         }
-        html, body { height: 100%; }
+        @import "compass/css3";
+        @import url(https://fonts.googleapis.com/css?family=Raleway:100);
+
+        html, body {
+          min-height: 100%;
+          height: 100%;
+        }
+
         body {
-            margin: 0;
-            background: radial-gradient(#666, #222);
-            overflow: hidden;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 100;
+          color: rgba(255, 255, 255, 0.75);
         }
-        .moving-zone {
-            position: absolute;
-            top:50%; left:50%;
-            width:300px; height:120px;
-            margin: -60px 0 0 -150px;
-            perspective: 800px;
+
+        #title {
+          position: fixed;
+          top: 10px;
+          left: 10px;
+          font-size: 20px;
+          letter-spacing: 0.1em;
+          z-index: 100;
         }
-        .popup {
-            position: absolute;
-            width:300px;
-            padding: 10px;
-            box-sizing: border-box;
-            border-radius: 20px 0 20px 0;
-            cursor: pointer;
-            transform-style: preserve-3d;
-            background: -webkit-linear-gradient(top left, white 50%, coral 50%);
-            background:    -moz-linear-gradient(top left, white 50%, coral 50%);
-            background:     -ms-linear-gradient(top left, white 50%, coral 50%);
-            background:      -o-linear-gradient(top left, white 50%, coral 50%);
-            background:         linear-gradient(top left, white 50%, coral 50%);
+
+        #sub-title {
+          position: fixed;
+          top: 35px;
+          left: 10px;
+          font-size: 14px;
+          letter-spacing: 0.1em;
+          z-index: 100;
         }
-        .popup:before {
-            content: '';
-            position: absolute;
-            left:5%; top:5%;
-            width:90%; height:90%;
-            border-radius: inherit;
-            background: rgba(0,0,0,.1);
-            box-shadow: 0 0 40px 20px rgba(0,0,0,.1);
-            transform: translateZ(-100px);
-        }
-        .popup-content {
-            background: #444;
-            padding: 20px;
-            box-sizing: border-box;
-            border-radius: 10px 0 10px 0;
-        }
-        .popup-text {
-            color: white;
-            font-family: 'Roboto', sans-serif;
-            font-size: 20px;
-            line-height: 30px;
-            font-weight: 100;
-            text-align: center;
-            transform: translateZ(15px);
-        }
-        .popup-text b {
-            color: coral;
-            font-weight: 300;
+
+        #canvas {
+          position: absolute;
+          left: 0;
+          top: 0;
         }
     </style>
 </head>
 
 # 张翼程 (Eason ZHANG)
 
-<div class="moving-zone">
-    <div class="popup">
-        <div class="popup-content">
-            <div class="popup-text">
-                Hi!
-                I'm <b>Eason</b>.<br/>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 <body>
+h1#title="Mouse Orbit"
+h2#sub-title="Ghost Particle Animation"
+#container
+canvas#canvas
+    
+    
 <table border="0" align = "center">
   <tr height="40px" valign="top">
     <td><span>硕士在读</span></td>
@@ -112,19 +90,292 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <script>
-    var moveForce = 30; // max popup movement in pixels
-    var rotateForce = 20; // max popup rotation in deg
-    $(document).mousemove(function(e) {
-        var docX = $(document).width();
-        var docY = $(document).height();
-        var moveX = (e.pageX - docX/2) / (docX/2) * -moveForce;
-        var moveY = (e.pageY - docY/2) / (docY/2) * -moveForce;
-        var rotateY = (e.pageX / docX * rotateForce*2) - rotateForce;
-        var rotateX = -((e.pageY / docY * rotateForce*2) - rotateForce);
-        $('.popup')
-            .css('left', moveX+'px')
-            .css('top', moveY+'px')
-            .css('transform', 'rotateX('+rotateX+'deg) rotateY('+rotateY+'deg)');
+var PI2 = Math.PI * 2;
+var HALF_PI = Math.PI / 2;
+
+var isTouch = 'ontouchstart' in window;
+var isSafari =  !!navigator.userAgent.match(/Version\/[\d\.]+.*Safari/);
+
+function Canvas(options) {
+  options = _.clone(options || {});
+  this.options = _.defaults(options, this.options);
+  
+  this.el = this.options.el;
+  this.ctx = this.el.getContext('2d');
+  
+  this.dpr = window.devicePixelRatio || 1;
+  
+  this.updateDimensions();
+  window.addEventListener('resize', this.updateDimensions.bind(this), false);
+  this.resetTarget();
+  
+  if(isTouch){
+      // touch
+	  this.el.addEventListener('touchstart', this.touchMove.bind(this), false);
+ 	 this.el.addEventListener('touchmove', this.touchMove.bind(this), false);
+//   	this.el.addEventListener('touchend', this.resetTarget.bind(this), false);
+  } else {
+    // Mouse
+    window.addEventListener('mousemove', this.mouseMove.bind(this), false);
+ 	 window.addEventListener('mouseout', this.resetTarget.bind(this), false);
+  }
+  
+  this.setupParticles();
+
+  this.loop();
+}
+
+Canvas.prototype.updateDimensions = function() {
+  this.width = this.el.width = _.result(this.options, 'width') * this.dpr;
+  this.height = this.el.height = _.result(this.options, 'height') * this.dpr;
+  this.el.style.width = _.result(this.options, 'width') + 'px';
+  this.el.style.height = _.result(this.options, 'height') + 'px';
+}
+
+// Update the orb target
+Canvas.prototype.mouseMove = function(event) {
+	this.target = new Vector(event.clientX * this.dpr, event.clientY* this.dpr);
+}
+
+// Reset to center when we mouse out
+Canvas.prototype.resetTarget = function() {
+	this.target = new Vector(this.width / 2, this.height /2);
+}
+
+// Touch Eent
+Canvas.prototype.touchMove = function(event) {
+  if(event.touches.length === 1) {  event.preventDefault(); }
+
+	this.target = new Vector(event.touches[0].pageX * this.dpr, event.touches[0].pageY * this.dpr);
+}
+
+// Defaults
+Canvas.prototype.options = {
+  count: 20,
+  speed: 0.5,
+  width: 400,
+  height: 400,
+  size: 10,
+  radius: 5,
+  background: '29, 22, 52',
+  maxDistance: 100
+}
+
+Canvas.prototype.setupParticles = function() {
+  this.particles = [];
+  var index = -1;
+  var between = PI2 / this.options.count;
+  while(++index < this.options.count) {
+    var x;
+    var y;
+    var angle;
+    var max = Math.max(this.width, this.height);
+    
+    angle = (index + 1) * between;
+    
+    x = Math.cos(angle) * max;
+    x += this.width / 2;
+
+    y = Math.sin(angle) * max;
+    y += this.height / 2;
+    
+    var particle = new Particle({
+      x: x,
+      y: y,
+      radius: this.options.radius,
+      size: this.options.size,
+      angle: angle,
+      color: this.options.color
     });
+    
+    this.particles.push(particle);
+  }
+}
+
+Canvas.prototype.findClosest = function() {
+  var index = -1;
+  var pointsLength = this.particles.length;
+
+  while(++index < pointsLength) {
+    var closestIndex = -1;
+    this.particles[index].closest = [];
+    
+    while(++closestIndex < pointsLength) {
+      var closest = this.particles[closestIndex];
+      var distance = this.particles[index].position.distanceTo(closest.position);
+      if(distance < this.options.maxDistance) {
+        var vector = new Vector(closest.position.x, closest.position.y);
+        vector.opacity = 1 - (distance / this.options.maxDistance);
+        vector.distance = distance;
+        this.particles[index].closest.push(vector);
+      }
+    }
+  }
+}
+
+Canvas.prototype.loop = function() {
+//   this.clear();
+  if(isTouch || isSafari) {
+	  this.ghost();
+  } else {
+	  this.ghostGradient();
+  }    
+  if(this.options.maxDistance > 0) {
+	  this.findClosest();
+  }    
+  this.draw();
+  
+  window.requestAnimationFrame(_.bind(this.loop, this));
+}
+
+Canvas.prototype.clear = function() {
+  this.ctx.clearRect(0, 0 , this.width, this.height);
+}
+
+Canvas.prototype.ghost = function() {
+  this.ctx.globalCompositeOperation = "source-over";
+  this.ctx.rect(0, 0 , this.width, this.height);
+  if(typeof this.options.background === 'string') {
+	  this.ctx.fillStyle = "rgb(" + this.options.background + ")";
+  } else  {
+    this.ctx.fillStyle = "rgb(" + this.options.background[0] + ")";
+  }
+    
+  this.ctx.fill();
+}
+
+Canvas.prototype.ghostGradient = function() {
+  var gradient;
+  
+  if(typeof this.options.background === 'string') {
+    this.ctx.fillStyle = 'rgb(' + this.options.background + ')';   
+  } else {
+	 	var gradient = this.ctx.createRadialGradient(this.width/2, this.height/2, 0, this.width/2, this.height/2, Math.max(this.width, this.height)/2);
+    
+    var length = this.options.background.length;
+    for(var i = 0; i < length; i++){
+      gradient.addColorStop((i+1) / length, 'rgb(' + this.options.background[i] + ')');
+    }
+    this.ctx.fillStyle = gradient;
+  }
+  
+  this.ctx.globalOpacity = 0.1;
+  this.ctx.globalCompositeOperation = "darken";
+  this.ctx.fillRect(0, 0 , this.width, this.height);
+}
+
+// Draw
+Canvas.prototype.draw = function() {
+  var index = -1;
+  var length = this.particles.length;
+  while(++index < length) {
+    var point = this.particles[index];
+    var color = point.color || this.options.color;
+    point.update(this.target, index);
+    
+    this.ctx.globalAlpha = 0.3;
+    this.ctx.globalCompositeOperation = "lighten";
+    this.ctx.fillStyle = 'rgb(' + color + ')';
+    this.ctx.beginPath();
+    this.ctx.arc(point.position.x, point.position.y, point.size, 0, PI2, false);
+    this.ctx.closePath();
+    this.ctx.fill();
+    
+    if(this.options.maxDistance > 0) {
+	    this.drawLines(point, color);
+    }
+  }  
+}
+
+// Draw connecting lines
+Canvas.prototype.drawLines = function (point, color) {
+  color = color || this.options.color;
+  var index = -1;
+  var length = point.closest.length;
+  this.ctx.globalAlpha = 0.2;
+  this.ctx.globalCompositeOperation = "screen";
+  this.ctx.lineCap = 'round';
+  while(++index < length) {
+    this.ctx.lineWidth = (point.size * 2) *  point.closest[index].opacity;
+    this.ctx.strokeStyle = 'rgba(' + color + ', ' + point.closest[index].opacity + ')';
+    this.ctx.beginPath();
+    this.ctx.moveTo(point.position.x, point.position.y);
+    this.ctx.lineTo(point.closest[index].x, point.closest[index].y);
+    this.ctx.stroke();
+  }
+}
+
+function Particle(options) {
+  options = _.clone(options || {});
+  this.options = _.defaults(options, this.options);
+  
+  this.position = this.shift = new Vector(this.options.x, this.options.y);
+  
+  this.speed = this.options.speed || 0.01 + Math.random() * 0.04;
+  
+  this.angle = this.options.angle || 0;
+    
+  if(this.options.color) {
+    var color = this.options.color.split(',');
+	  var colorIndex = -1;
+    while(++colorIndex < 3) {      
+      color[colorIndex] = Math.round(parseInt(color[colorIndex], 10) + (Math.random()*100)-50);
+      
+      // Clamp
+      color[colorIndex] = Math.min(color[colorIndex], 255);
+      color[colorIndex] = Math.max(color[colorIndex], 0);
+    }
+    this.color = color.join(', ');
+  } 
+  
+  // Size
+  this.options.size = this.options.size || 7;
+  this.size = 1 + Math.random() * this.options.size;
+  this.targetSize = this.options.targetSize || this.options.size;
+  
+  this.orbit = this.options.radius * 0.5 + (this.options.radius * 0.5 * Math.random());
+}
+
+Particle.prototype.update = function(target, index) {
+  this.angle += this.speed;
+
+  this.shift.x += (target.x - this.shift.x) * this.speed;
+  this.shift.y += (target.y - this.shift.y) * this.speed;
+
+  this.position.x = this.shift.x + Math.cos(index + this.angle) * this.orbit;
+  this.position.y = this.shift.y + Math.sin(index + this.angle) * this.orbit;
+  
+  if(!isSafari) {
+    this.size += (this.targetSize - this.size) * 0.03;
+
+    if(Math.round(this.size) === Math.round(this.targetSize)) {
+      this.targetSize = 1 + Math.random() * this.options.size;
+    }
+  }
+}
+
+function Vector(x, y) {
+  this.x = x || 0;
+  this.y = y || 0;
+}
+
+Vector.prototype.distanceTo = function(vector, abs) {
+  var distance = Math.sqrt(Math.pow(this.x - vector.x, 2) + Math.pow(this.y - vector.y, 2));
+  return abs || false ? Math.abs(distance) : distance;
+};
+
+new Canvas({
+  el: document.getElementById('canvas'),
+
+  count: 25,
+  speed: 0.3,
+  radius: 6,
+  width: function() { return window.innerWidth; },
+  height: function() { return window.innerHeight; },
+  size: 15,
+  color: '30, 180, 1',
+  maxDistance: 100,
+  background: ['1, 62, 66', '1, 40, 60']
+});
 </script>
 </body>
