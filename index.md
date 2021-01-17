@@ -23,9 +23,8 @@
 
 # 张翼程 (Eason ZHANG)
 
-<canvas id='canvas'></canvas>
-
 <body>    
+<canvas id='canvas'></canvas>
 <table border="0" align = "center">
   <tr height="40px" valign="top">
     <td><span>硕士在读</span></td>
