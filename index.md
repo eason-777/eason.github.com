@@ -28,7 +28,6 @@
             border: 1px dashed;
             top:0;
             left:0;
-	    z-index : -1;
         }
     </style>
 </head>
