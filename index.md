@@ -13,7 +13,7 @@
   </tr>
 </table>
 
-<a href="/index-en.html">英文版</a>
+<a href="index-en.html">英文版</a>
 
 Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
