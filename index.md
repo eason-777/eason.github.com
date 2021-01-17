@@ -1,3 +1,4 @@
+<html>
 <head>
     <meta charset="UTF-8">
     <style>
@@ -127,3 +128,4 @@ $(document).mousemove(function(e) {
 });
 </script>
 </body>
+</html>
