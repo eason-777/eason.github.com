@@ -20,6 +20,74 @@
 # 张翼程 (Eason ZHANG)
 
 <body>    
+<!-- Menu ->
+
+<div id="firstpaneDiv" class="menu_list">
+<h3 class="menu_head current">系统管理</h3>
+<div style="display:block" class="menu_nva">
+<a href="#">菜单管理</a>
+<a href="#">账户管理</a>
+<a href="#">日志管理</a>
+<a href="#">角色管理</a>
+<a href="#">编码管理</a>
+<a href="#">操作日志</a>
+<a href="#">流程管理</a>
+</div>
+<h3 class="menu_head">xxx菜单1</h3>
+<div style="display:none" class="menu_nva">
+<a href="#">用例1xx</a>
+<a href="#">用例2xx</a>
+<a href="#">用例3xx</a>
+<a href="#">用例4xx</a>
+<a href="#">用例5xx</a>
+<a href="#">用例6xx</a>
+<a href="#">用例7xx</a>
+<a href="#">用例8xx</a>
+</div>
+<h3 class="menu_head">xxx菜单2</h3>
+<div style="display:none" class="menu_nva">
+<a href="#">用例1xx</a>
+<a href="#">用例2xx</a>
+<a href="#">用例3xx</a>
+<a href="#">用例4xx</a>
+<a href="#">用例5xx</a>
+<a href="#">用例6xx</a>
+<a href="#">用例7xx</a>
+<a href="#">用例8xx</a>
+</div><h3 class="menu_head">xxx菜单3</h3>
+<div style="display:none" class="menu_nva">
+<a href="#">用例1xx</a>
+<a href="#">用例2xx</a>
+<a href="#">用例3xx</a>
+<a href="#">用例4xx</a>
+<a href="#">用例5xx</a>
+<a href="#">用例6xx</a>
+<a href="#">用例7xx</a>
+<a href="#">用例8xx</a>
+</div><h3 class="menu_head">xxx菜单4</h3>
+<div style="display:none" class="menu_nva">
+<a href="#">用例1xx</a>
+<a href="#">用例2xx</a>
+<a href="#">用例3xx</a>
+<a href="#">用例4xx</a>
+<a href="#">用例5xx</a>
+<a href="#">用例6xx</a>
+<a href="#">用例7xx</a>
+<a href="#">用例8xx</a>
+</div>
+<h3 class="menu_head">xxx菜单5</h3>
+<div style="display:none" class="menu_nva">
+<a href="#">用例1xx</a>
+<a href="#">用例2xx</a>
+<a href="#">用例3xx</a>
+<a href="#">用例4xx</a>
+<a href="#">用例5xx</a>
+<a href="#">用例6xx</a>
+<a href="#">用例7xx</a>
+<a href="#">用例8xx</a>
+</div>
+
+<!-- Brief Intro -->
 <table border="0" align = "center">
   <tr height="40px" valign="top">
     <td><span>硕士在读</span></td>
@@ -42,4 +110,21 @@
 </table>
 <br>
 <a href="index-en.html">英文版</a><br>
+
+<!-- menu -->
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+$("#firstpaneDiv .menu_nva:eq(0)").show();
+$("#firstpaneDiv h3.menu_head").click(function(){
+$(this).addClass("current").next("div.menu_nva").slideToggle(200).siblings("div.menu_nva").slideUp("slow");
+$(this).siblings().removeClass("current");
+});
+$("#secondpane .menu_nva:eq(0)").show();
+$("#secondpane h3.menu_head").mouseover(function(){
+$(this).addClass("current").next("div.menu_nva").slideDown(400).siblings("div.menu_nva").slideUp("slow");
+$(this).siblings().removeClass("current");
+});
+});
+</script>
 </body>
