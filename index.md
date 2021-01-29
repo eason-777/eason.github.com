@@ -1,4 +1,4 @@
-
+<html>
 <head>
     <meta charset="UTF-8">
     <style>
@@ -174,3 +174,4 @@ $(this).siblings().removeClass("current");
 });
 </script>
 </body>
+</html>
