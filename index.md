@@ -63,7 +63,7 @@ text-decoration: none;
     </style>
 </head>
 
-# 张翼程 (Eason ZHANG)
+<h1> 张翼程 (Eason ZHANG) </h1>
 
 <body>    
 <!-- Menu ->
